@@ -1,0 +1,9 @@
+docker commands
+
+docker ps 
+docker ps -a
+docker pull <image>
+docker run <image>
+docker stop <id>
+docker build -t <name>
+
