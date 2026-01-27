@@ -1,1 +1,75 @@
-Volume implementation
+================================================================
+ TASK: Docker Data Persistence Test Using Volumes
+ AUTHOR: Sufiyan Khan
+================================================================
+
+GOAL: 
+Prove that if a container crashes or gets deleted, the data inside 
+a Docker Volume stays safe and can be attached to a new container.
+
+----------------------------------------------------------------
+1. THE SETUP (Creating the storage)
+----------------------------------------------------------------
+First, I manually created a volume. This acts like a permanent 
+hard drive that exists outside the container's lifecycle.
+
+Command:
+  docker volume create my-secret-vol
+
+----------------------------------------------------------------
+2. THE TEST (Writing data)
+----------------------------------------------------------------
+I spun up an Nginx container (Container A) and mounted our new 
+volume to its HTML folder.
+
+Command:
+  docker run -d --name container-a -v my-secret-vol:/usr/share/nginx/html -p 8081:80 nginx
+
+Then, I logged in to create a proof-of-concept file. 
+*Note: I had to use single quotes (' ') around the outer command 
+because the "!" character was causing a bash event error.*
+
+Command:
+  docker exec -it container-a bash -c 'echo "<h1>Mission Successful: Data Survived!</h1>" > /usr/share/nginx/html/index.html'
+
+Verification:
+  Ran `curl localhost:8081`. 
+  Result: The custom message appeared.
+
+----------------------------------------------------------------
+3. THE DESTRUCTION (Simulating a crash)
+----------------------------------------------------------------
+To simulate a disaster or an update, I completely removed the 
+running container.
+
+Commands:
+  docker stop container-a
+  docker rm container-a
+
+At this point, the application was gone. If I hadn't used a volume, 
+my data would have been lost here.
+
+----------------------------------------------------------------
+4. THE RECOVERY (Proving persistence)
+----------------------------------------------------------------
+I started a completely fresh container (Container B). Crucially, 
+I attached the *same* volume (`my-secret-vol`) to the same path.
+
+Command:
+  docker run -d --name container-b -v my-secret-vol:/usr/share/nginx/html -p 8082:80 nginx
+
+----------------------------------------------------------------
+5. FINAL VERDICT
+----------------------------------------------------------------
+I checked the new container on the new port.
+
+Command:
+  curl localhost:8082
+
+Result:
+  It returned: "<h1>Mission Successful: Data Survived!</h1>"
+
+Conclusion:
+  The test passed. The data survived the deletion of Container A 
+  and was successfully picked up by Container B. This confirms 
+  volumes are decoupled from the container lifecycle.
