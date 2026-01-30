@@ -171,7 +171,7 @@ ELK is used to:
 - Kibana visualizes logs
 
 ---
-# Lesson 2 – Logstash Basics (ELK Foundation)
+# Lesson 2: Logstash Basics (ELK Foundation)
 
 ## 1. What is Logstash?
 
