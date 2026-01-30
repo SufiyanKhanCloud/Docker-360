@@ -149,3 +149,42 @@ Connection:
 - Logstash understands structure
 - Elasticsearch indexes fields
 - Kibana visualizes fields
+
+5) Use Index Lifecycle Management (ILM)
+---------------------------------------
+What it is:
+- Automatic management of log data age
+
+Why:
+- Logs grow very fast
+- Disk can fill
+- System can crash
+
+ILM does:
+- Hot phase (new data)
+- Warm phase (older data)
+- Delete old data
+
+Connection:
+- Elasticsearch applies ILM to indexes
+
+6) Separate Indexes by Log Type
+-------------------------------
+What it is:
+- Different logs → different indexes
+
+Examples:
+- app-logs-*
+- nginx-logs-*
+- system-logs-*
+
+Why:
+- Better performance
+- Easier debugging
+- Cleaner dashboards
+
+Connection:
+- Logstash decides index
+- Elasticsearch stores it
+- Kibana reads it
+
