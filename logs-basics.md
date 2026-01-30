@@ -223,7 +223,7 @@ This is why Logstash is used.
 
 ---
 
-## 3. Core Concept – Logstash Pipeline
+## 3. Core Concept: Logstash Pipeline
 
 Logstash works using **one main pipeline**:
 
@@ -237,7 +237,7 @@ This is the heart of Logstash.
 
 ---
 
-## 4. INPUT – Where Logs Come From
+## 4. INPUT: Where Logs Come From
 
 Input defines **from where Logstash reads logs**.
 
@@ -255,7 +255,7 @@ Simple idea:
 
 ---
 
-## 5. FILTER – Processing Logs (Most Important Part)
+## 5. FILTER: Processing Logs (Most Important Part)
 
 Filter is where logs are **cleaned and processed**.
 
@@ -280,7 +280,7 @@ Simple idea:
 
 ---
 
-## 6. OUTPUT – Where Logs Go
+## 6. OUTPUT:  Where Logs Go
 
 Output defines **where processed logs are sent**.
 
