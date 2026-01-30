@@ -1,0 +1,71 @@
+===============================
+ELK STACK – PHASE 1 & PHASE 2
+Beginner Concept Notes
+===============================
+
+--------------------------------
+PHASE 1: BIG PICTURE OF ELK
+--------------------------------
+
+ELK Stack = Elasticsearch + Logstash + Kibana
+
+ELK is used for:
+- Centralized logging
+- Searching logs
+- Monitoring systems
+- Debugging issues
+- Visualizing data
+
+--------------------------------
+ELK COMPONENTS (CORE IDEA)
+--------------------------------
+
+1) Logstash
+-----------
+What it is:
+- A log processing tool
+
+Why it is used:
+- Collects logs from different sources
+- Parses and cleans logs
+- Converts messy logs into structured data
+
+What it does:
+- Input → Filter → Output
+
+Example:
+- Reads system logs
+- Extracts fields (time, level, message)
+- Sends clean logs to Elasticsearch
+
+2) Elasticsearch
+----------------
+What it is:
+- A search and analytics engine
+
+Why it is used:
+- Stores logs
+- Indexes logs
+- Allows fast searching
+
+Important idea:
+- Elasticsearch does NOT store data like a normal database
+- It stores data as indexes for fast search
+
+Example:
+- Search error logs in last 10 minutes
+- Find failed login attempts
+
+3) Kibana
+---------
+What it is:
+- A visualization tool
+
+Why it is used:
+- View logs in browser
+- Create dashboards
+- Analyze trends
+
+Example:
+- Graph of errors per hour
+- Dashboard showing system health
