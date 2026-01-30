@@ -1,4 +1,3 @@
-```md
 # Lesson 1 – Logs Basics (ELK Foundation)
 
 ## 1. What is a Log?
@@ -170,7 +169,6 @@ ELK is used to:
 - Logstash processes logs
 - Elasticsearch stores logs
 - Kibana visualizes logs
-```
 
 ---
 
