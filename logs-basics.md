@@ -171,4 +171,170 @@ ELK is used to:
 - Kibana visualizes logs
 
 ---
+# Lesson 2 – Logstash Basics (ELK Foundation)
+
+## 1. What is Logstash?
+
+Logstash is a tool used to **collect, process, and send logs** to Elasticsearch.
+
+Simple meaning:
+> Logstash = log cleaner + log translator + log sender
+
+Logstash sits **between logs and Elasticsearch**.
+
+Flow:
+```
+
+Logs → Logstash → Elasticsearch → Kibana
+
+```
+
+---
+
+## 2. Why Logstash is Needed
+
+Logs are usually:
+- Messy
+- Unstructured
+- Hard to search
+
+Example of a raw log:
+```
+
+Jan 29 10:21:11 ERROR User login failed from 192.168.1.10
+
+```
+
+Elasticsearch prefers **structured data**, not messy text.
+
+Logstash converts raw logs into structured logs.
+
+Structured example:
+```
+
+timestamp: Jan 29 10:21:11
+level: ERROR
+message: User login failed
+ip: 192.168.1.10
+
+```
+
+This is why Logstash is used.
+
+---
+
+## 3. Core Concept – Logstash Pipeline
+
+Logstash works using **one main pipeline**:
+
+```
+
+INPUT → FILTER → OUTPUT
+
+```
+
+This is the heart of Logstash.
+
+---
+
+## 4. INPUT – Where Logs Come From
+
+Input defines **from where Logstash reads logs**.
+
+Common input sources:
+- Log files
+- Filebeat
+- TCP / UDP
+- STDIN (for testing)
+
+Example:
+- Read logs from a file on disk
+
+Simple idea:
+> “Logstash, yahan se logs uthao”
+
+---
+
+## 5. FILTER – Processing Logs (Most Important Part)
+
+Filter is where logs are **cleaned and processed**.
+
+Filter is used to:
+- Parse logs
+- Extract fields
+- Remove unnecessary data
+- Add new fields or tags
+
+Common filters:
+- grok → pattern matching
+- mutate → rename or remove fields
+- date → fix timestamps
+
+Example:
+- Extract log level
+- Extract message
+- Extract IP address
+
+Simple idea:
+> “Logs ko tod kar clean bana do”
+
+---
+
+## 6. OUTPUT – Where Logs Go
+
+Output defines **where processed logs are sent**.
+
+Common outputs:
+- Elasticsearch (most common)
+- File (testing)
+- stdout (debugging)
+
+Example:
+- Send clean logs to Elasticsearch
+
+Simple idea:
+> “Clean logs Elasticsearch ko bhej do”
+
+---
+
+## 7. Real-Life Log Flow
+
+How everything connects:
+
+```
+
+1. Application writes logs to a file
+2. Logstash reads the file (INPUT)
+3. Logstash parses logs (FILTER)
+4. Logstash sends logs to Elasticsearch (OUTPUT)
+5. Kibana displays logs
+
+```
+
+Important:
+- Kibana never reads logs directly
+- Kibana only reads data from Elasticsearch
+
+---
+
+## 8. Important Interview Points
+
+- Logstash is not mandatory but is a **best practice**
+- Logstash makes logs structured
+- Elasticsearch works best with clean data
+- INPUT → FILTER → OUTPUT is the core of Logstash
+
+---
+
+## 9. One-Line Revision Summary
+
+- INPUT → logs kaha se aa rahe hain  
+- FILTER → logs ko clean aur structure karna  
+- OUTPUT → logs kaha jaa rahe hain  
+
+---
+
+## End of Lesson 2 Notes
+
+---
 
