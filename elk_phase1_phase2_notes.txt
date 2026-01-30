@@ -111,3 +111,41 @@ Connection:
 
 IMPORTANT:
 - Never casually delete volumes
+
+3) Do NOT Send Raw Logs Directly to Elasticsearch
+-------------------------------------------------
+What it is:
+- Logs should go through Logstash first
+
+Why:
+- Raw logs are messy
+- Elasticsearch expects structured data
+
+Logstash does:
+- Parsing
+- Cleaning
+- Adding fields
+- Formatting data
+
+Correct flow:
+Logs → Logstash → Elasticsearch
+
+4) Use Structured Logs (JSON)
+-----------------------------
+What it is:
+- Logs written as key-value pairs
+
+Why:
+- Easier searching
+- Faster indexing
+- Better dashboards
+
+Example:
+level=ERROR
+service=auth
+message=Login failed
+
+Connection:
+- Logstash understands structure
+- Elasticsearch indexes fields
+- Kibana visualizes fields
