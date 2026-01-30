@@ -1,4 +1,4 @@
-# Lesson 1 – Logs Basics (ELK Foundation)
+# Lesson 1: Logs Basics (ELK Foundation)
 
 ## 1. What is a Log?
 A log is a written record of what a system or application is doing.
