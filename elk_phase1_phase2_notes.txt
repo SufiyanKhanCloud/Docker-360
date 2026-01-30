@@ -69,3 +69,45 @@ Why it is used:
 Example:
 - Graph of errors per hour
 - Dashboard showing system health
+
+--------------------------------
+PHASE 2: ELK BEST PRACTICES
+--------------------------------
+
+1) Use Docker / Docker Compose
+------------------------------
+What it is:
+- Running ELK inside containers
+
+Why it is used:
+- Easy setup
+- No dependency issues
+- Same environment everywhere
+- Easy start and stop
+
+Connection:
+- Docker runs Elasticsearch
+- Docker runs Logstash
+- Docker runs Kibana
+- Docker Compose connects them via network
+
+2) Use Volumes for Elasticsearch Data
+-------------------------------------
+What it is:
+- Persistent storage outside container
+
+Why it is used:
+- Containers can be deleted
+- Volumes keep data safe
+
+Without volume:
+- Container removed → data lost
+
+With volume:
+- Container removed → data remains
+
+Connection:
+- Elasticsearch stores indexes in volume
+
+IMPORTANT:
+- Never casually delete volumes
