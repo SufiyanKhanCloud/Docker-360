@@ -188,3 +188,32 @@ Connection:
 - Elasticsearch stores it
 - Kibana reads it
 
+7) Avoid Running Everything as Root
+-----------------------------------
+What it is:
+- Limiting permissions
+
+Why:
+- Security
+- Prevent system damage
+
+Note:
+- Advanced practice
+- Important for production
+
+8) Start Small (Local First)
+----------------------------
+What it is:
+- Learn ELK locally before production
+
+Why:
+- No cost
+- Safe learning
+- Easy reset
+
+Best approach:
+Local Docker → Production later
+
+--------------------------------
+END OF NOTES
+--------------------------------
